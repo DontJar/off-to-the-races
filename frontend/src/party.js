@@ -26,6 +26,21 @@ class Party{
       `
   }
 
+  renderPartyHeader(){
+    return`
+    <a href='#' onclick='renderPartyPage(${this.id})'>
+      <img src=${this.image} height='15'>
+    </a>
+    `
+  }
+
+  static addNewBtn(){
+    return`
+    <button id='newCandidateForParty' class='ui basic button'>
+      Add New Candidate
+    </button>`
+  }
+
     //debugger
     // let partyCandidateArray = this.candidates
     // partyCandidateArray.forEach(function(cand){

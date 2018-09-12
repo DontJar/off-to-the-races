@@ -8,22 +8,20 @@ class Api::V1::CandidateValuesController < ApplicationController
   #    render json: @notes
   #  end
   #
-  #  def update
-  #    @note.update(note_params)
-  #    if @note.save
-  #      render json: @note, status: :accepted
-  #    else
-  #      render json: { errors: @note.errors.full_messages }, status: :unprocessible_entity
-  #    end
-  #  end
-  #
-  #  private
-  #
-  #  def note_params
-  #    params.permit(:title, :content)
-  #  end
-  #
-  #  def find_note
-     # @note = Note.find(params[:id])
-  #  end
+
+  def index
+    @candidatevalues = CandidateValue.all
+    render json: @candidatevalues
+  end
+
+  def update
+    render json: CandidateValue.find_by_id(params[:id]).update(safe_params)
+  end
+
+   private
+
+   def safe_params
+     params.require(:candidate_value).permit(:candidate_id, :value_id, :conviction)
+   end
+
 end

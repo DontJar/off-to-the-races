@@ -19,11 +19,16 @@
         Off to the Races
       </div>
     </h2>
-  <br>
+    <h4 id="partiesHeader">Select a party page:</h4>
+    <div id='newCandidateBtn'>
+      <button id='newCandidateForParty' class='ui basic button'>
+        Add New Candidate
+      </button>
+    </div>
   <hr>
   <br>
 
-  <main>
+  <main id="main">
 
     <div id='parties_contaner' class='ui two column grid' >
     </div>
@@ -31,36 +36,21 @@
     <div id='oneParty_container'>
       <div id='partydetails'>
         <h3 id='partyName'></h3>
-        <img id='partyImage' height='350'>
+        <img id='partyImage' height='200'>
         <table class='ui table' id='candidateValuesTable'>
-        <!-- append <thead> -->
-          <!-- append <tr> -->
-            <!-- append <th></th> -->
-            <!-- append <th>Flag Respect</th> -->
-            <!-- append <th>Family</th> -->
-            <!-- append <th>Environment</th> -->
-            <!-- append <th>Economy</th> -->
-          <!-- </th> -->
-        <!-- </thead> -->
-        <!-- append <tbody> -->
-          <!-- append <tr>this row will contain everything out of Candidate.renderCandidates()</tr> -->
-        <!-- </tbody> -->
       </table>
     </div>
   </div>
 
-
     <div id='candidate_form' class='ui form'>
     </div>
 
-    <div id='oneParty_container'>
-    </div>
-
   </main>
+
+  </body>
 
   <script src="src/party.js" charset="utf-8"></script>
   <script src="src/value.js" charset="utf-8"></script>
   <script src="src/candidate.js" charset="utf-8"></script>
   <script src="src/index.js" charset="utf-8"></script>
-  </body>
 </html>
