@@ -8,3 +8,7 @@ header {
   margin: 0 auto;
   height: 45;
 }
+
+li {
+  font-size: 15px;
+}

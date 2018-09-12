@@ -5,6 +5,7 @@ class Party{
       this.slogan = data.slogan
       this.colors = data.colors
       this.image = data.image
+      this.candidates = data.candidates
 
       Party.all.push(this)
   }
@@ -16,14 +17,39 @@ class Party{
   renderPartyContainer() {
     // debugger
     return`
-      <div id='partyId_${this.id}'>
+      <div id='partyId_${this.id}' class='column'>
       <a href='#' onclick='renderPartyPage(${this.id})'>
-        <img src=${this.image}>
+        <img src=${this.image} height='200'>
       </a>
       <h3>${this.slogan}</h3>
       </div>
       `
   }
+
+    //debugger
+    // let partyCandidateArray = this.candidates
+    // partyCandidateArray.forEach(function(cand){
+    //   let cc = Candidate.findById(cand.id)
+    //   console.log(cc.candidate_values[0])
+    // })
+    //^ in an effort to render Party Values; we stopped en media res
+
+    //<h3>Where we stand</h3>
+    // <table id="values_table">
+    //   <tr>
+    //     <th>Name</th>
+    //     <th>Average Conviction</th>
+    //   <tr>
+    // </table>
+
+//     return `
+//     <div id='partydetails'>
+//     <h3>${this.name}</h3>
+//     <img src=${this.image}>
+//     <ul>
+//       <li>
+//     `
+//   }
 }
 
 Party.all = []
