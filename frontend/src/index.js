@@ -19,6 +19,7 @@ function fetchAllParties(){
 }
 
 function renderPartyPage(partyId){
+
   const endPoint = 'http://localhost:3000/api/v1/candidates';
   fetch(endPoint)
     .then(res => res.json())
@@ -31,6 +32,10 @@ function renderPartyPage(partyId){
 }
 
 function finalRenderPartyPage(partyId){
+  if (document.getElementById("newCandidateForm")){
+    document.getElementById("newCandidateForm").innerHTML = ""
+  }
+
   document.querySelector('#parties_contaner').innerHTML = ""
   document.querySelector('#candidateValuesTable').innerHTML = ""
   let p = Party.findById(partyId)
@@ -158,7 +163,13 @@ function goBackToFront(){
   </div>
   </div>
   </div>`
-  fetchAllParties()
+
+  Party.all.forEach(function(party){
+    document.getElementById('parties_contaner').innerHTML += party.renderPartyContainer()
+  })
+
+
+  // fetchAllParties()
 }
 
 function renderForm(){
@@ -190,8 +201,6 @@ function newSubmit(){
       .then(res => res.json())
       .then(jsonData => {
         let newCCId = jsonData.id
-        debugger
-
         fetch(`http://localhost:3000/api/v1/candidate_values`,{
         method: 'POST',
         headers: {
@@ -242,4 +251,5 @@ function newSubmit(){
               )
             }
           )
-        }
+          .then(renderPartyPage(newPartyId))
+  }

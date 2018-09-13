@@ -71,9 +71,8 @@ class Candidate{
 
   static renderNewCandidateForm(){
     return `
+    <div class="ui form" id="newCandidateForm">
     <h2>New Candidate</h2>
-    <div class="ui form">
-
 
         <div class="field">
           <label>First initial</label>
@@ -112,8 +111,8 @@ class Candidate{
           <input type='range' min='1' max='10' value='Economy' id='newEconomyValue' class='slider'>
         </div>
 
-      </div>
       <button class="ui button" id="newCCSubmit" type="submit">Submit</button>
+      </div>
     </div>
     `
   }
