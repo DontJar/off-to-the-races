@@ -87,6 +87,8 @@ function handleEdit(){
 
 function patchFetch(){
   ccId = parseInt(event.path[1].children[0].id.split("_")[1])
+  let thisCandidate = Candidate.findById(ccId)
+  let partyId = thisCandidate.party_id
   cvIdFlag = parseInt(event.path[1].children[2].children[0].id.split("_")[1])
   cvIdFamily = parseInt(event.path[1].children[3].children[0].id.split("_")[1])
   cvIdEnv = parseInt(event.path[1].children[4].children[0].id.split("_")[1])
@@ -133,14 +135,38 @@ function patchFetch(){
                 'Content-Type': 'application/json'},
               body: JSON.stringify({conviction: newEconomyConv})
                 }))))
-                .then(resetCc(ccId))
+                // .then(resetCc(ccId))
+                // .then(fetchOneCandidate(ccId))
+                .then (renderPartyPage(partyId))
 }
 
 function resetCc(ccid){
-  let cInstance = Candidate.findById(ccid)
-  document.getElementById(`candidateRowId_${ccid}`).innerHTML = cInstance.renderCandidate()
-  addEditBtn()
+  // let cInstance = Candidate.findById(ccid)
+  // document.getElementById(`candidateRowId_${ccid}`).innerHTML = cInstance.renderCandidate()
+  // addEditBtn()
 }
+// Attempt at re-rendering just one Candidate
+// function fetchOneCandidate(ccId){
+//   const endPoint = 'http://localhost:3000/api/v1/candidates/${ccId}';
+//   fetch(endPoint)
+//     .then(res => res.json())
+//     .then(json => {
+//
+//       let candidateForUpdate = Candidate.findById(ccId)
+//       candidateForUpdate.
+//
+//
+//       json.forEach(candidate => {
+//         const newCandidate = new Candidate(candidate)
+//         if (newCandidate.party_id === partyId){
+//
+//           document.getElementById('tableBody').innerHTML += newCandidate.renderCandidate()
+//         }
+//       })
+//       addEditBtn()
+//     })
+// }
+
 
 function fetchAllValues(){
   const endPoint = 'http://localhost:3000/api/v1/values';
