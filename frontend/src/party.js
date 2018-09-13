@@ -41,6 +41,16 @@ class Party{
     </button>`
   }
 
+  static addPartiesToNewPartyForm(){
+    Party.all.forEach(function (party){
+      document.getElementById('partySelect').innerHTML += `
+      <option value='${party.id}'>${party.name}</option>`
+    })
+  }
+
+
+
+
     //debugger
     // let partyCandidateArray = this.candidates
     // partyCandidateArray.forEach(function(cand){

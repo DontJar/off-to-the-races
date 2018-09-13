@@ -41,10 +41,8 @@ class Candidate{
      `
   }
 
-  //after td row fomr calls for <div field> but we took it out
-  //maybe it will work
+
   renderEditInTable(){
-    //debugger
        return `
        <tr id='candidateRowId_${this.id}'>
         <form class='ui form' id='editFormCandidate_${this.id}'>
@@ -71,34 +69,54 @@ class Candidate{
        `
   }
 
+  static renderNewCandidateForm(){
+    return `
+    <h2>New Candidate</h2>
+    <div class="ui form">
+
+
+        <div class="field">
+          <label>First initial</label>
+          <input type="text" placeholder="First initial" id="firstInitialSelect" data-keeper-lock-id="k-rq4wbkqnnar">
+        <keeper-lock id="k-rq4wbkqnnar" style="filter: grayscale(100%); top: 34px; left: 147px; z-index: 1; visibility: hidden; height: 16px !important;"></keeper-lock></div>
+
+        <div class="field">
+          <label>Last name</label>
+          <input type="text" placeholder="Last name"
+          id="lastNameSelect" data-keeper-lock-id="k-yw2guvwlpy">
+        <keeper-lock id="k-yw2guvwlpy" style="filter: grayscale(100%); top: 34px; left: 338px; z-index: 1; visibility: hidden; height: 16px !important;"></keeper-lock></div>
+
+          <div class="field">
+            <label>Party</label>
+            <select multiple="" class='ui dropdown' id='partySelect'>
+            </select>
+          </div>
+
+        <div class="field">
+          <label>Flag Respect</label>
+          <input type='range' min='1' max='10' value='Flag Respect' id='newFlagRespectValue' class='slider'>
+        </div>
+
+        <div class="field">
+          <label>Family</label>
+          <input type='range' min='1' max='10' value='Family' id='newFamilyValue' class='slider'>
+        </div>
+
+        <div class="field">
+          <label>Environment</label>
+          <input type='range' min='1' max='10' value='Environment' id='newEnvironmentValue' class='slider'>
+        </div>
+
+        <div class="field">
+          <label>Economy</label>
+          <input type='range' min='1' max='10' value='Economy' id='newEconomyValue' class='slider'>
+        </div>
+
+      </div>
+      <button class="ui button" id="newCCSubmit" type="submit">Submit</button>
+    </div>
+    `
+  }
 }
-
-// <td>${this.candidate_values[0].conviction}</td>
-
-// renderEdit(){
-//   return `
-//   <div class='fields'>
-//   <div class='field'>
-//   <h2>${this.name}</h2>
-//   <label id='Flag Respect'>Flag Respect</label>
-//   <input type='integer' value='${this.candidate_values[0].conviction}' data-keeper-lock-id='k-vr2bmajs2t'>
-//   <keeper-lock id='k-vr2bmajs2t' style='filter: grayscale(100%); top: 34px; left: 147px; z-index: 1; visibility: hidden; height: 16px !important;'></keeper-lock>
-//   <label id='Family'>Family</label>
-//   <input type='integer' value='${this.candidate_values[1].conviction}' data-keeper-lock-id='k-vr2bmajs2t'>
-//   <keeper-lock id='k-vr2bmajs2t' style='filter: grayscale(100%); top: 34px; left: 147px; z-index: 1; visibility: hidden; height: 16px !important;'></keeper-lock>
-//   <label id='Environment'>Environment</label>
-//   <input type='integer' value='${this.candidate_values[2].conviction}' data-keeper-lock-id='k-vr2bmajs2t'>
-//   <keeper-lock id='k-vr2bmajs2t' style='filter: grayscale(100%); top: 34px; left: 147px; z-index: 1; visibility: hidden; height: 16px !important;'></keeper-lock>
-//   <label id='Economy'>Economy</label>
-//   <input type='integer' value='${this.candidate_values[3].conviction}' data-keeper-lock-id='k-vr2bmajs2t'>
-//   <br>
-//   <br>
-//   <keeper-lock id='k-vr2bmajs2t' style='filter: grayscale(100%); top: 34px; left: 147px; z-index: 1; visibility: hidden; height: 16px !important;'></keeper-lock>
-//   <button class='ui basic button' input type='submit' id='ccId_${this.id}'>
-//   Submit
-//   </button>
-//   </div>
-//   </div>`
-// }
 
 Candidate.all = []

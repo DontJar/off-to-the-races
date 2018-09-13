@@ -9,19 +9,23 @@
        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
 
+
+
     <!-- <link rel="stylesheet" href="styles.css"> -->
   </head>
   <body>
 
     <h2 class="ui header">
-      <img class="ui image" src="images/noun_uncle sam's hat_1112674.svg">
-      <div class="content">
+      <center>
+      <a href='#' onclick='goBackToFront()'>
+        <img class="ui image" src="images/noun_uncle sam's hat_1112674.svg" height='100'>
+      </a>
         Off to the Races
-      </div>
+    </center>
     </h2>
-    <h4 id="partiesHeader">Select a party page:</h4>
+    <!-- <h4 id="partiesHeader">Select a party page:</h4> -->
     <div id='newCandidateBtn'>
-      <button id='newCandidateForParty' class='ui basic button'>
+      <button id='newCandidate' class='ui basic button'>
         Add New Candidate
       </button>
     </div>
@@ -35,17 +39,17 @@
 
     <div id='oneParty_container'>
       <div id='partydetails'>
+        <div id='candidate_form' class='ui form'>
         <h3 id='partyName'></h3>
         <img id='partyImage' height='200'>
         <table class='ui table' id='candidateValuesTable'>
       </table>
     </div>
   </div>
-
-    <div id='candidate_form' class='ui form'>
-    </div>
+  </div>
 
   </main>
+
 
   </body>
 

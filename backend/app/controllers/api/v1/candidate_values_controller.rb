@@ -18,6 +18,11 @@ class Api::V1::CandidateValuesController < ApplicationController
     render json: CandidateValue.find_by_id(params[:id]).update(safe_params)
   end
 
+  def create
+    render json: CandidateValue.create(safe_params)
+  end
+
+
    private
 
    def safe_params

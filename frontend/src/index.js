@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log("connected")
   fetchAllParties()
   fetchAllValues()
-
+  document.getElementById('newCandidate').addEventListener('click', renderForm)
 })
 
 function fetchAllParties(){
@@ -13,8 +13,7 @@ function fetchAllParties(){
     json.forEach(party => {
       const newParty = new Party(party);
       document.getElementById('parties_contaner').innerHTML += newParty.renderPartyContainer()
-      document.getElementById('partiesHeader').innerHTML += newParty.renderPartyHeader()
-      // document.getElementById(`partyId_${party.id}`).addEventListener('click', renderPartyPage)
+      // document.getElementById('partiesHeader').innerHTML += newParty.renderPartyHeader()
     });
   });
 }
@@ -61,14 +60,6 @@ function fetchAllCandidates(partyId){
     })
 }
 
-// function addNewCCBtn(){
-//   debugger
-//   let prtycont = document.getElementById('newCandidateBtn')
-//   prtycont.innerHTML += Party.addNewBtn()
-// }
-
-//HERE!!! btnArr is not iterable????
-//also changed classname (got rid of semantic class name but maybe we need it, we do not know.  Maybe we need multiple classes)
 function addEditBtn(){
   let btnCollection = document.getElementsByClassName('editBtn')
   let btnArr = Array.from(btnCollection)
@@ -140,33 +131,6 @@ function patchFetch(){
                 .then (renderPartyPage(partyId))
 }
 
-function resetCc(ccid){
-  // let cInstance = Candidate.findById(ccid)
-  // document.getElementById(`candidateRowId_${ccid}`).innerHTML = cInstance.renderCandidate()
-  // addEditBtn()
-}
-// Attempt at re-rendering just one Candidate
-// function fetchOneCandidate(ccId){
-//   const endPoint = 'http://localhost:3000/api/v1/candidates/${ccId}';
-//   fetch(endPoint)
-//     .then(res => res.json())
-//     .then(json => {
-//
-//       let candidateForUpdate = Candidate.findById(ccId)
-//       candidateForUpdate.
-//
-//
-//       json.forEach(candidate => {
-//         const newCandidate = new Candidate(candidate)
-//         if (newCandidate.party_id === partyId){
-//
-//           document.getElementById('tableBody').innerHTML += newCandidate.renderCandidate()
-//         }
-//       })
-//       addEditBtn()
-//     })
-// }
-
 
 function fetchAllValues(){
   const endPoint = 'http://localhost:3000/api/v1/values';
@@ -178,3 +142,104 @@ function fetchAllValues(){
     });
   });
 }
+
+function goBackToFront(){
+  document.getElementById('main').innerHTML =
+  `<div id='parties_contaner' class='ui two column grid' >
+  </div>
+
+  <div id='oneParty_container'>
+    <div id='partydetails'>
+      <div id='candidate_form' class='ui form'>
+      <h3 id='partyName'></h3>
+      <img id='partyImage' height='200'>
+      <table class='ui table' id='candidateValuesTable'>
+    </table>
+  </div>
+  </div>
+  </div>`
+  fetchAllParties()
+}
+
+function renderForm(){
+  goBackToFront()
+  document.getElementById('candidate_form').innerHTML +=
+  Candidate.renderNewCandidateForm()
+  document.getElementById('newCCSubmit').addEventListener('click', newSubmit)
+  Party.addPartiesToNewPartyForm()
+}
+
+function newSubmit(){
+  newName = document.getElementById('firstInitialSelect').value + ". " + document.getElementById('lastNameSelect').value
+  newFlagRespectValue = parseInt(document.getElementById('newFlagRespectValue').value)
+  newFamilyValue = parseInt(document.getElementById('newFamilyValue').value)
+  newEconomyValue = parseInt(document.getElementById('newEconomyValue').value)
+  newEnvironmentValue = parseInt(document.getElementById('newEnvironmentValue').value)
+  newPartyId = parseInt(document.getElementById('partySelect').value)
+
+  //make a new Candidate
+  fetch(`http://localhost:3000/api/v1/candidates`,{
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      name: newName,
+      party_id: newPartyId})
+      })
+
+      .then(res => res.json())
+      .then(jsonData => {
+        let newCCId = jsonData.id
+        debugger
+
+        fetch(`http://localhost:3000/api/v1/candidate_values`,{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          value_id: 1,
+          candidate_id: newCCId,
+          conviction: newFlagRespectValue})
+          })
+
+          .then(
+
+          fetch(`http://localhost:3000/api/v1/candidate_values`,{
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'},
+              body: JSON.stringify({
+                value_id: 2,
+                candidate_id: newCCId,
+                conviction: newFamilyValue})
+                })
+
+              .then(
+
+              fetch(`http://localhost:3000/api/v1/candidate_values`,{
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'},
+                  body: JSON.stringify({
+                    value_id: 3,
+                    candidate_id: newCCId,
+                    conviction: newEconomyValue})
+                    })
+
+                .then(
+
+                fetch(`http://localhost:3000/api/v1/candidate_values`,{
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                      value_id: 4,
+                      candidate_id: newCCId,
+                      conviction: newEnvironmentValue})
+                    })
+                  )
+                )
+              )
+            }
+          )
+        }
