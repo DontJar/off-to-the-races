@@ -67,8 +67,12 @@ function fetchAllCandidates(partyId){
 //   prtycont.innerHTML += Party.addNewBtn()
 // }
 
+//HERE!!! btnArr is not iterable????
+//also changed classname (got rid of semantic class name but maybe we need it, we do not know.  Maybe we need multiple classes)
 function addEditBtn(){
-  let btnArr = document.querySelectorAll("button")
+  let btnCollection = document.getElementsByClassName('editBtn')
+  let btnArr = Array.from(btnCollection)
+
   btnArr.forEach(function (oneBtn){
     oneBtn.addEventListener('click', handleEdit)
   })
@@ -135,6 +139,7 @@ function patchFetch(){
 function resetCc(ccid){
   let cInstance = Candidate.findById(ccid)
   document.getElementById(`candidateRowId_${ccid}`).innerHTML = cInstance.renderCandidate()
+  addEditBtn()
 }
 
 function fetchAllValues(){

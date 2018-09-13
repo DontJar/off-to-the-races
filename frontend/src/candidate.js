@@ -33,7 +33,7 @@ class Candidate{
          <td>${this.candidate_values.filter(c=>c.value_id===3)[0].conviction}</td>
          <td>${this.candidate_values.filter(c=>c.value_id===4)[0].conviction}</td>
          <td>
-         <button class='ui basic button' id='candidateid_${this.id}'>
+         <button class='editBtn' id='candidateid_${this.id}'>
           Edit
          </button>
          </td>
@@ -61,7 +61,7 @@ class Candidate{
             <td>
               <input type='range' min='1' max='10' value='${this.candidate_values.filter(c=>c.value_id===4)[0].conviction}' id='cvid_${this.candidate_values.filter(c=>c.value_id===4)[0].id}' class='slider'>
             </td>
-           <button class='ui basic button' type='submit' id='editCandidateid_${this.id}'>
+           <button class='ui basic button' class='submitBtn' type='submit' id='editCandidateid_${this.id}'>
            Submit
            </button>
            </td>
