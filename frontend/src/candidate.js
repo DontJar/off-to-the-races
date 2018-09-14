@@ -59,9 +59,14 @@ class Candidate{
             <td>
               <input type='range' min='1' max='10' value='${this.candidate_values.filter(c=>c.value_id===4)[0].conviction}' id='cvid_${this.candidate_values.filter(c=>c.value_id===4)[0].id}' class='slider'>
             </td>
-           <button class='ui basic button' class='submitBtn' type='submit' id='editCandidateid_${this.id}'>
-           Submit
-           </button>
+            <div class = "ui vertical buttons">
+              <button class='ui black button' class='submitBtn' type='submit' id='editCandidateid_${this.id}'>
+              Submit
+              </button>
+              <button class="ui red button" id='deleteCandidateid_${this.id}'>
+              Delete
+              </button>
+            </div>
            </td>
 
         </form>

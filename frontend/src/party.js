@@ -48,9 +48,6 @@ class Party{
     })
   }
 
-
-
-
     //debugger
     // let partyCandidateArray = this.candidates
     // partyCandidateArray.forEach(function(cand){

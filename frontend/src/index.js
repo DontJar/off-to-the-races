@@ -13,7 +13,6 @@ function fetchAllParties(){
     json.forEach(party => {
       const newParty = new Party(party);
       document.getElementById('parties_contaner').innerHTML += newParty.renderPartyContainer()
-      // document.getElementById('partiesHeader').innerHTML += newParty.renderPartyHeader()
     });
   });
 }
@@ -79,6 +78,7 @@ function handleEdit(){
   let cc = Candidate.findById(candidateId)
   document.getElementById(`candidateRowId_${candidateId}`).innerHTML = cc.renderEditInTable()
   document.getElementById(`editCandidateid_${candidateId}`).addEventListener("click", patchFetch)
+  document.getElementById(`deleteCandidateid_${candidateId}`).addEventListener('click', deleteFetch)
 }
 
 function patchFetch(){
@@ -94,7 +94,6 @@ function patchFetch(){
   let newFamilyConv = parseInt(event.path[1].children[3].children[0].value)
   let newEnvironmentConv = parseInt(event.path[1].children[4].children[0].value)
   let newEconomyConv = parseInt(event.path[1].children[5].children[0].value)
-  // debugger
   fetch(`http://localhost:3000/api/v1/candidate_values/${cvIdFlag}`,{
     method: 'PATCH',
     headers: {
@@ -130,10 +129,22 @@ function patchFetch(){
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'},
               body: JSON.stringify({conviction: newEconomyConv})
-                }))))
-                // .then(resetCc(ccId))
-                // .then(fetchOneCandidate(ccId))
-                .then (renderPartyPage(partyId))
+                })
+              )
+            )
+          )
+          .then (renderPartyPage(partyId))
+}
+
+function deleteFetch(){
+  ccId = parseInt(event.path[1].children[0].id.split("_")[1])
+  let thisCandidate = Candidate.findById(ccId)
+  let partyId = thisCandidate.party_id
+  // debugger
+  fetch(`http://localhost:3000/api/v1/candidates/${ccId}`,{
+    method: 'DELETE'
+  })
+  .then (renderPartyPage(partyId))
 }
 
 
@@ -167,9 +178,6 @@ function goBackToFront(){
   Party.all.forEach(function(party){
     document.getElementById('parties_contaner').innerHTML += party.renderPartyContainer()
   })
-
-
-  // fetchAllParties()
 }
 
 function renderForm(){
