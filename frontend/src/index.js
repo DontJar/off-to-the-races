@@ -35,6 +35,27 @@ function finalRenderPartyPage(partyId){
     document.getElementById("newCandidateForm").innerHTML = ""
   }
 
+  document.getElementById('partyAndForm').innerHTML=
+  `
+  <div class="ui two column grid">
+    <div class= "five wide column">
+      <div class= "ui segment">
+        <h3 id='partyName'></h3>
+        <center>
+          <img id='partyImage' height='200'>
+        </center>
+      </div>
+    </div>
+      <div class= "eleven wide column">
+        <div class= "ui segment">
+          <h3>Test</h3>
+        </div>
+      </div>
+  </div>`
+
+
+
+
   document.querySelector('#parties_contaner').innerHTML = ""
   document.querySelector('#candidateValuesTable').innerHTML = ""
   let p = Party.findById(partyId)
@@ -162,19 +183,19 @@ function fetchAllValues(){
 
 function goBackToFront(){
   document.getElementById('main').innerHTML =
-  `<div id='parties_contaner' class='ui two column grid' >
-  </div>
-
-  <div id='oneParty_container'>
-    <div id='partydetails'>
-      <div id='candidate_form' class='ui form'>
-      <h3 id='partyName'></h3>
-      <img id='partyImage' height='200'>
-      <table class='ui table' id='candidateValuesTable'>
-    </table>
-  </div>
-  </div>
-  </div>`
+  `      <div id='parties_contaner' class='ui two column grid' >
+        </div>
+        <div id='oneParty_container'>
+          <div id='partydetails'>
+          <div id=partyAndForm>
+          </div>
+            <div id='candidate_form' class='ui form'>
+              <table class='ui table' id='candidateValuesTable'>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>`
 
   Party.all.forEach(function(party){
     document.getElementById('parties_contaner').innerHTML += party.renderPartyContainer()
