@@ -35,9 +35,9 @@ function finalRenderPartyPage(partyId){
     document.getElementById("newCandidateForm").innerHTML = ""
   }
   let p = Party.findById(partyId)
-  document.getElementById('partyAndForm').innerHTML += p.renderAvgValues()
   document.querySelector('#parties_contaner').innerHTML = ""
   document.querySelector('#candidateValuesTable').innerHTML = ""
+  document.getElementById('partyAndForm').innerHTML = p.renderAvgValues()
 
   renderSingleParty(partyId)
 }
@@ -166,7 +166,7 @@ function fetchAllValues(){
 
 function goBackToFront(){
   document.getElementById('main').innerHTML =
-  `      <div id='parties_contaner' class='ui two column padded grid' >
+  `      <div id='parties_contaner' class='ui three column padded grid' >
         </div>
         <br>
         <div id='oneParty_container'>

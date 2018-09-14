@@ -9,6 +9,8 @@
 
 Party.create(name: 'Pirate Revolution Party', slogan: 'A tall mast and square sail for every child', colors: "blue and off-blue", image: "/Users/JS/dev_school/labs/mod3/off_to_the_races/frontend/images/pirateParty.webp")
 Party.create(name: 'The 2002', slogan: 'Bringing back MySpace', colors: "tan and black", image: "/Users/JS/dev_school/labs/mod3/off_to_the_races/frontend/images/2002.jpg")
+Party.create(name: 'Two Tailed Dog Party', slogan: "We'll Promise anything!", colors: "blue and black", image: "/Users/JS/dev_school/labs/mod3/off_to_the_races/frontend/images/two-tailed-dog-party.jpg
+  ")
 
 
 Candidate.create(name: "H. Hoover", tagline: "Not the vaccum", party_id: 1)

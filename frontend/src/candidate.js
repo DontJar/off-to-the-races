@@ -82,7 +82,7 @@ class Candidate{
 
           <div class="field">
             <label>First initial</label>
-            <input type="text" placeholder="First initial" id="firstInitialSelect" data-keeper-lock-id="k-rq4wbkqnnar">
+            <input type="text" maxlength="1" placeholder="First initial" id="firstInitialSelect" data-keeper-lock-id="k-rq4wbkqnnar">
           <keeper-lock id="k-rq4wbkqnnar" style="filter: grayscale(100%); top: 34px; left: 147px; z-index: 1; visibility: hidden; height: 16px !important;"></keeper-lock></div>
 
           <div class="field">
