@@ -34,31 +34,11 @@ function finalRenderPartyPage(partyId){
   if (document.getElementById("newCandidateForm")){
     document.getElementById("newCandidateForm").innerHTML = ""
   }
-
-  document.getElementById('partyAndForm').innerHTML=
-  `
-  <div class="ui two column grid">
-    <div class= "five wide column">
-      <div class= "ui segment">
-        <h3 id='partyName'></h3>
-        <center>
-          <img id='partyImage' height='200'>
-        </center>
-      </div>
-    </div>
-      <div class= "eleven wide column">
-        <div class= "ui segment">
-          <h3>Test</h3>
-        </div>
-      </div>
-  </div>`
-
-
-
-
+  let p = Party.findById(partyId)
+  document.getElementById('partyAndForm').innerHTML += p.renderAvgValues()
   document.querySelector('#parties_contaner').innerHTML = ""
   document.querySelector('#candidateValuesTable').innerHTML = ""
-  let p = Party.findById(partyId)
+
   renderSingleParty(partyId)
 }
 
@@ -72,6 +52,7 @@ function renderSingleParty(partyId){
 
 function fetchAllCandidates(partyId){
   const endPoint = 'http://localhost:3000/api/v1/candidates';
+  let p = Party.findById(partyId)
   fetch(endPoint)
     .then(res => res.json())
     .then(json => {
@@ -82,7 +63,9 @@ function fetchAllCandidates(partyId){
         }
       })
       addEditBtn()
+      p.avgMath(partyId)
     })
+
 }
 
 function addEditBtn(){
@@ -183,8 +166,9 @@ function fetchAllValues(){
 
 function goBackToFront(){
   document.getElementById('main').innerHTML =
-  `      <div id='parties_contaner' class='ui two column grid' >
+  `      <div id='parties_contaner' class='ui two column padded grid' >
         </div>
+        <br>
         <div id='oneParty_container'>
           <div id='partydetails'>
           <div id=partyAndForm>
