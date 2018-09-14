@@ -85,15 +85,16 @@ function patchFetch(){
   ccId = parseInt(event.path[1].children[0].id.split("_")[1])
   let thisCandidate = Candidate.findById(ccId)
   let partyId = thisCandidate.party_id
-  cvIdFlag = parseInt(event.path[1].children[2].children[0].id.split("_")[1])
-  cvIdFamily = parseInt(event.path[1].children[3].children[0].id.split("_")[1])
-  cvIdEnv = parseInt(event.path[1].children[4].children[0].id.split("_")[1])
-  cvIdEcon = parseInt(event.path[1].children[5].children[0].id.split("_")[1])
+  cvIdFlag = parseInt(document.getElementById(`candidateRowId_${ccId}`).children[2].children[0].id.split("_")[1])
+  cvIdFamily = parseInt(document.getElementById(`candidateRowId_${ccId}`).children[3].children[0].id.split("_")[1])
+  cvIdEnv = parseInt(document.getElementById(`candidateRowId_${ccId}`).children[4].children[0].id.split("_")[1])
+  cvIdEcon = parseInt(document.getElementById(`candidateRowId_${ccId}`).children[5].children[0].id.split("_")[1])
 
-  let newFlagConv = parseInt(event.path[1].children[2].children[0].value)
-  let newFamilyConv = parseInt(event.path[1].children[3].children[0].value)
-  let newEnvironmentConv = parseInt(event.path[1].children[4].children[0].value)
-  let newEconomyConv = parseInt(event.path[1].children[5].children[0].value)
+  let newFlagConv = parseInt(document.getElementById(`candidateRowId_${ccId}`).children[2].children[0].value)
+  let newFamilyConv = parseInt(document.getElementById(`candidateRowId_${ccId}`).children[3].children[0].value)
+  let newEnvironmentConv = parseInt(document.getElementById(`candidateRowId_${ccId}`).children[4].children[0].value)
+  let newEconomyConv = parseInt(document.getElementById(`candidateRowId_${ccId}`).children[5].children[0].value)
+
   fetch(`http://localhost:3000/api/v1/candidate_values/${cvIdFlag}`,{
     method: 'PATCH',
     headers: {
