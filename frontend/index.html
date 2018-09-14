@@ -15,40 +15,54 @@
   </head>
   <body>
 
-    <h2 class="ui header">
-      <center>
-      <a href='#' onclick='goBackToFront()'>
-        <img class="ui image" src="images/noun_uncle sam's hat_1112674.svg" height='100'>
-      </a>
-        Off to the Races
-    </center>
-    </h2>
+    <div class="ui fixed menu">
+      <div class='ui container'>
+        <!-- <center> -->
+        <a href='#' class="header item" onclick='goBackToFront()'>
+          <img class="logo" src="images/noun_uncle sam's hat_1112674.svg" height='100'>
+          Off to the Races
+        </a>
+        <a class="item" id='newCandidate'>
+          Add New Candidate
+        </a>
+      </div>
+    </div>
     <!-- <h4 id="partiesHeader">Select a party page:</h4> -->
-    <div id='newCandidateBtn'>
+    <!-- <div id='newCandidateBtn'>
       <button id='newCandidate' class='ui basic button'>
         Add New Candidate
       </button>
-    </div>
-  <hr>
-  <br>
+    </div> -->
 
-  <main id="main">
+    <div class="ui main text container">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
 
-    <div id='parties_contaner' class='ui two column grid' >
-    </div>
+    <main id="main">
 
-    <div id='oneParty_container'>
-      <div id='partydetails'>
-        <div id='candidate_form' class='ui form'>
-          <h3 id='partyName'></h3>
-            <img id='partyImage' height='200'>
-          <table class='ui table' id='candidateValuesTable'>
-          </table>
+      <div id='parties_contaner' class='ui two column grid' >
+      </div>
+
+      <div id='oneParty_container'>
+        <div id='partydetails'>
+          <div id='candidate_form' class='ui form'>
+            <h3 id='partyName'></h3>
+              <img id='partyImage' height='200'>
+            <table class='ui table' id='candidateValuesTable'>
+            </table>
+          </div>
         </div>
       </div>
     </div>
 
-  </main>
+    </main>
 
 
   </body>
